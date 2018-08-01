@@ -1,5 +1,5 @@
 <template>
-  <Sign>
+  <SignBase>
     <b-form>
       <b-form-group label="Name:" label-for="nameInput">
         <b-form-input id="nameInput" type="text" v-model="form.name" required placeholder="Enter name" />
@@ -22,11 +22,11 @@
         <b-button type="submit" variant="outline-primary" class="w-100 mt-3">Submit</b-button>
       </b-form-group>
     </b-form>
-  </Sign>
+  </SignBase>
 </template>
 
 <script>
-  import Sign from '@/components/Sign';
+  import SignBase from '@/components/SignBase';
 
   export default {
     data() {
@@ -41,7 +41,7 @@
     },
     name: 'sign-in',
     components: {
-      Sign,
+      SignBase,
     },
   };
 </script>
