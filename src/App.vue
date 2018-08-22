@@ -1,20 +1,22 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div id="app" class="app">
+    <router-view/>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'app',
-  };
+    name: 'app'
+  }
 </script>
 
-<style>
-  #app {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-    margin-top: 60px;
+<style lang="scss">
+  @import "sass/main";
+
+  body {
+    height: 100%;
+    #app {
+      height: 100%;
+    }
   }
 </style>
