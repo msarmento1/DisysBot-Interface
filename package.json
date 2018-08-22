@@ -1,5 +1,5 @@
 {
-  "name": "vuestic-admin",
+  "name": "DisysBot",
   "version": "1.7.0",
   "description": "Vue.js admin template",
   "author": "smartapant <smartapant@gmail.com>",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/epicmaxco/vuestic-admin.git"
+    "url": "https://github.com/comnetunb/DisysBot"
   },
   "license": "MIT",
   "dependencies": {

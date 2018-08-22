@@ -165,7 +165,13 @@
     "statistics": "Estadisticas",
     "tables": "Tablas",
     "typography": "Tipografía",
-    "uiElements": "Elementos UI"
+    "uiElements": "Elementos UI",
+    "taskSet": "Conjunto de tareas",
+    "running": "En ejecución",
+    "finished": "Terminado",
+    "add": "Añadir",
+    "workers": "Trabajadores",
+    "logs": "Registros"
   },
   "messages": {
     "all": "Ver todos los mensajes",

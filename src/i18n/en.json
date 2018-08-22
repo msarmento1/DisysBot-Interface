@@ -193,8 +193,13 @@
     "uiElements": "UI Elements",
     "treeView": "Tree view",
     "dateTimePickers": "Date time pickers",
-    "cards": "Cards",
-    "fileUpload": "File Upload"
+    "fileUpload": "File Upload",
+    "taskSet": "Task Set",
+    "running": "Running",
+    "finished": "Finished",
+    "add": "Add",
+    "workers": "Workers",
+    "logs": "Logs"
   },
   "messages": {
     "all": "See all messages",

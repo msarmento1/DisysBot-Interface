@@ -183,7 +183,13 @@
     "typography": "Tipografia",
     "uiElements": "Elementos UI",
     "treeView": "Árvore de visualização",
-    "dateTimePickers": "Selecionar Data e Hora"
+    "dateTimePickers": "Selecionar Data e Hora",
+    "taskSet": "Conjunto de tarefas",
+    "running": "Em execução",
+    "finished": "Acabado",
+    "add": "Adicionar",
+    "workers": "Trabalhadores",
+    "logs": "Registros"
   },
   "messages": {
     "all": "Ver todas as menssagens",
