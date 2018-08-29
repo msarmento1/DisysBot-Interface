@@ -5,6 +5,17 @@ export default {
   },
   routes: [
     {
+      path: 'task-set',
+      displayName: 'menu.taskSet',
+      disabled: true,
+      children: [
+        {
+          path: 'running',
+          displayName: 'menu.running'
+        }
+      ]
+    },
+    {
       path: 'dashboard',
       displayName: 'menu.dashboard'
     },

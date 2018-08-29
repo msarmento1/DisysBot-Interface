@@ -79,6 +79,17 @@ export default new Router({
       component: AppLayout,
       children: [
         {
+          path: 'task-set',
+          component: EmptyParentComponent,
+          children: [
+            {
+              name: 'running',
+              path: 'running',
+              component: lazyLoading('dashboard/task-set/Running')
+            }
+          ]
+        },
+        {
           name: 'dashboard',
           path: 'dashboard',
           component: lazyLoading('dashboard/Dashboard'),

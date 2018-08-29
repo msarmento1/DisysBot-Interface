@@ -3,16 +3,16 @@
     <template slot="menu">
       <sidebar-link :to="{ name: 'dashboard' }">
         <span slot="title">
-          <span class="sidebar-menu-item-icon vuestic-icon vuestic-icon-dashboard"></span>
+          <span class="sidebar-menu-item-icon fa fa-dashboard"></span>
           <span>{{ $t('menu.dashboard') }}</span>
         </span>
       </sidebar-link>
       <sidebar-link-group>
         <span slot="title">
-          <span class="sidebar-menu-item-icon vuestic-icon vuestic-icon-statistics"></span>
+          <span class="sidebar-menu-item-icon fa fa-tasks"></span>
           <span>{{ $t('menu.taskSet') }}</span>
         </span>
-        <sidebar-link :to="{ name: 'charts' }">
+        <sidebar-link :to="{ name: 'running' }">
           <span slot="title">
             <span>{{ $t('menu.running') }}</span>
           </span>
@@ -30,13 +30,13 @@
       </sidebar-link-group>
       <sidebar-link :to="{ name: 'tables' }">
         <span slot="title">
-          <span class="sidebar-menu-item-icon vuestic-icon vuestic-icon-extras"></span>
+          <span class="sidebar-menu-item-icon fa fa-laptop"></span>
           <span>{{ $t('menu.workers') }}</span>
         </span>
       </sidebar-link>
       <sidebar-link :to="{ name: 'tables' }">
         <span slot="title">
-          <span class="sidebar-menu-item-icon vuestic-icon vuestic-icon-files"></span>
+          <span class="sidebar-menu-item-icon fa fa-file-text-o"></span>
           <span>{{ $t('menu.logs') }}</span>
         </span>
       </sidebar-link>
