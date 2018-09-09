@@ -4,9 +4,11 @@
     "alreadyJoined": "Already joined?",
     "createAccount": "Create account",
     "createNewAccount": "Create account",
+    "fullName": "Full Name",
     "email": "Email",
     "login": "Login",
     "password": "Password",
+    "confirmPassword": "Confirm Password",
     "signUp": "Sign Up",
     "termsOfUse": "Terms of Use.",
     "welcome": "Welcome!"

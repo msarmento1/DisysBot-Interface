@@ -7,6 +7,7 @@
     "email": "Email",
     "login": "Entrar",
     "password": "Senha",
+    "confirmPassword": "Confirme Senha",
     "signUp": "Cadastrar-se",
     "termsOfUse": "Termos de uso.",
     "welcome": "Bem vindo!"

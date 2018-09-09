@@ -10,10 +10,14 @@ module.exports = {
     browser: true,
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-  extends: 'standard',
+  extends: [
+    'standard',
+    'prettier'
+  ],
   // required to lint *.vue files
   plugins: [
-    'html'
+    'html',
+    'prettier'
   ],
   // add your custom rules here
   'rules': {

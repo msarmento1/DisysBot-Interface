@@ -1,22 +1,32 @@
 <template>
   <div class="signup">
     <h2>{{'auth.createNewAccount' | translate}}</h2>
-    <form method="post" action="/auth/signup" name="signup">
+    <form v-on:submit.prevent="signUp">
       <div class="form-group">
         <div class="input-group">
-          <input type="text" id="email" required="required"/>
+          <input type="text" id="name" v-model="input.name" required="required" />
+          <label class="control-label" for="name">{{'auth.fullName' | translate}}</label><i class="bar"></i>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" id="email" v-model="input.email" required="required" />
           <label class="control-label" for="email">{{'auth.email' | translate}}</label><i class="bar"></i>
         </div>
       </div>
       <div class="form-group">
         <div class="input-group">
-          <input type="password" id="password" required="required"/>
+          <input type="password" id="password" v-model="input.password" required="required" />
           <label class="control-label" for="password">{{'auth.password' | translate}}</label><i class="bar"></i>
         </div>
       </div>
-      <vuestic-checkbox
-        :id="'checkbox1'"
-        v-model="checkboxOneModel">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="password" id="confirm-password" v-model="input.confirmPassord" required="required" />
+          <label class="control-label" for="confirm-password">{{'auth.confirmPassword' | translate}}</label><i class="bar"></i>
+        </div>
+      </div>
+      <vuestic-checkbox :id="'checkbox1'" v-model="checkboxOneModel">
         <template slot="label">{{'auth.agree' | translate}}
           <router-link to="">{{'auth.termsOfUse' | translate}}</router-link>
         </template>
@@ -28,15 +38,47 @@
         <router-link class='link' :to="{name: 'login'}">{{'auth.alreadyJoined' | translate}}</router-link>
       </div>
     </form>
+    <vuestic-modal :show.sync="show" v-bind:small="true" v-bind:force="true" ref="modal" :cancelClass="'none'" :okText="'modal.close' | translate">
+      <div slot="title">{{'modal.title' | translate}}</div>
+      <div>
+        {{'modal.message' | translate}}
+      </div>
+    </vuestic-modal>
   </div>
 </template>
 
 <script>
   export default {
     name: 'signup',
-    data () {
+    data() {
       return {
-        checkboxOneModel: true
+        show: true,
+        checkboxOneModel: true,
+        input: {
+          username: '',
+          password: ''
+        },
+        modal: {
+          title: '',
+          message: ''
+        }
+      }
+    },
+    methods: {
+      signUp() {
+        this
+          .$http
+          .post('http://localhost:16181/api/v1/auth/signup', this.input)
+          .then((res) => {
+            const { token } = res.body;
+            localStorage.setItem('token', token)
+            this.$router.push('/admin/dashboard')
+          })
+          .catch((e) => {
+            this.modal.title = 'Error'
+            this.modal.message = e.body.reason
+            this.$refs.modal.open()
+          })
       }
     }
   }

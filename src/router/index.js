@@ -21,11 +21,12 @@ const EmptyParentComponent = {
 }
 
 export default new Router({
+  mode: 'history',
   routes: [
     ...demoRoutes,
     {
       path: '*',
-      redirect: { name: 'dashboard' },
+      redirect: { name: 'login' },
     },
     {
       path: '/auth',
@@ -85,6 +86,9 @@ export default new Router({
             {
               name: 'running',
               path: 'running',
+              meta: {
+                requiresAuth: true
+              },
               component: lazyLoading('dashboard/task-set/Running')
             }
           ]
@@ -92,6 +96,9 @@ export default new Router({
         {
           name: 'dashboard',
           path: 'dashboard',
+          meta: {
+            requiresAuth: true
+          },
           component: lazyLoading('dashboard/Dashboard'),
           default: true,
         },
