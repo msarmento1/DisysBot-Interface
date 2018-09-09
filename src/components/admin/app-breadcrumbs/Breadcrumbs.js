@@ -1,6 +1,6 @@
 export default {
   root: {
-    path: '/',
+    path: '/admin/dashboard',
     displayName: 'Home'
   },
   routes: [

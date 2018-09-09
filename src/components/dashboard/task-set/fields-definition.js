@@ -6,9 +6,9 @@ export default {
       sortField: 'name'
     },
     {
-      name: 'remainingTasks',
+      name: 'remainingTasksCount',
       title: 'remaining tasks',
-      sortField: 'remainingTasks'
+      sortField: 'remainingTasksCount'
     },
     {
       name: 'priority',

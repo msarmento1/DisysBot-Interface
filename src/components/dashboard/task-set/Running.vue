@@ -1,24 +1,16 @@
 <template>
   <div class="data-visualisation-tab dashboard-tab">
-      <div>
-        <vuestic-widget :headerText="$t('menu.running')">
-          <vuestic-data-table
-            :apiMode="apiMode"
-            :tableData="tableData"
-            :tableFields="tableFields"
-            :itemsPerPage="itemsPerPage"
-            :onEachSide="onEachSide"
-            :sortFunctions="sortFunctions"
-            :dataModeFilterableFields="dataModeFilterableFields"
-          >
-          </vuestic-data-table>
-        </vuestic-widget>
+    <div>
+      <vuestic-widget :headerText="$t('menu.running')">
+        <vuestic-data-table :apiMode="apiMode" :apiUrl="apiUrl" :httpFetch="fetch" :tableFields="tableFields" :itemsPerPage="itemsPerPage"
+          :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
+        </vuestic-data-table>
+      </vuestic-widget>
     </div>
   </div>
 </template>
 
 <script>
-  import TableData from './TableData'
   import FieldsDef from './fields-definition'
   import Vue from 'vue'
   import CustomActions from './CustomActions'
@@ -28,11 +20,11 @@
   export default {
     name: 'data-visualisation-tab',
 
-    data () {
+    data() {
       return {
-        apiMode: false,
+        apiMode: true,
+        apiUrl: 'http://localhost:16181/api/v1/taskset/running',
         sortFunctions: FieldsDef.sortFunctions,
-        tableData: TableData,
         onEachSide: 1,
         tableFields: FieldsDef.tableFields,
         dataModeFilterableFields: ['name'],
@@ -48,6 +40,12 @@
           }
         ],
       }
+    },
+    methods: {
+      fetch(apiUrl, httpOptions) {
+        const token = localStorage.getItem('token')
+        return this.$http.get(apiUrl, { params: { token } })
+      }
     }
   }
 </script>
@@ -62,6 +60,4 @@
     padding: 0 2rem;
     height: 24rem;
   }
-
-
 </style>
