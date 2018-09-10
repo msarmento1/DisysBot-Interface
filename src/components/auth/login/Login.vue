@@ -59,6 +59,11 @@
           .catch((e) => {
             this.modal.title = 'Error'
             this.modal.message = e.body.reason
+
+            if (!this.modal.message) {
+              this.modal.message = 'API server is unreachable'
+            }
+
             this.$refs.modal.open()
           })
       }

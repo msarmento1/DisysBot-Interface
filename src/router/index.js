@@ -89,9 +89,17 @@ export default new Router({
               meta: {
                 requiresAuth: true
               },
-              component: lazyLoading('dashboard/task-set/Running')
+              component: lazyLoading('dashboard/task-set/running/Running')
             }
           ]
+        },
+        {
+          name: 'worker',
+          path: 'worker',
+          meta: {
+            requiresAuth: true
+          },
+          component: lazyLoading('dashboard/worker/Worker')
         },
         {
           name: 'dashboard',

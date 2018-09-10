@@ -2,8 +2,8 @@
   <div class="data-visualisation-tab dashboard-tab">
     <div>
       <vuestic-widget :headerText="$t('menu.running')">
-        <vuestic-data-table :apiMode="apiMode" :apiUrl="apiUrl" :httpFetch="fetch" :tableFields="tableFields" :itemsPerPage="itemsPerPage"
-          :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
+        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpFetch="fetch" :tableFields="tableFields"
+          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
         </vuestic-data-table>
       </vuestic-widget>
     </div>
@@ -18,10 +18,11 @@
   Vue.component('custom-actions', CustomActions)
 
   export default {
-    name: 'data-visualisation-tab',
+    name: 'running',
 
     data() {
       return {
+        interval: {},
         apiMode: true,
         apiUrl: 'http://localhost/api/v1/taskset/running',
         sortFunctions: FieldsDef.sortFunctions,
@@ -46,18 +47,16 @@
         const token = localStorage.getItem('token')
         return this.$http.get(apiUrl, { params: { token } })
       }
+    },
+    mounted() {
+      this.$nextTick(() => {
+        this.interval = setInterval(() => {
+          this.$refs.vuesticDataTable.$refs.vuetable.refresh()
+        }, 5000)
+      })
+    },
+    beforeDestroy() {
+      clearInterval(this.interval)
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  @import "../../../sass/_variables.scss";
-  @import "~bootstrap/scss/functions";
-  @import "~bootstrap/scss/variables";
-  @import "~bootstrap/scss/mixins/breakpoints";
-
-  .chart-container {
-    padding: 0 2rem;
-    height: 24rem;
-  }
-</style>

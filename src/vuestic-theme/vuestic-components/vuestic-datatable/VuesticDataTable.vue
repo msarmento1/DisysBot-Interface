@@ -1,57 +1,26 @@
 <template>
-  <div class="vuestic-data-table table-responsive"
-       :class="{'data-loading': loading}">
+  <div class="vuestic-data-table table-responsive" :class="{'data-loading': loading}">
     <div class="d-flex flex-md-row flex-column align-items-center" :class="controlsAlignmentClass">
-      <filter-bar
-        @filter="onFilterSet"
-        :label="filterInputLabel"
-        v-show="filterInputShown"
-      />
+      <filter-bar @filter="onFilterSet" :label="filterInputLabel" v-show="filterInputShown" />
       <div class="datatable-controls d-flex flex-row">
         <div class="form-group">
           <slot name="additionalTableControl"></slot>
         </div>
-        <items-per-page :options="itemsPerPage"
-                        :label="itemsPerPageLabel"
-                        :defaultPerPage="defaultPerPageComputed"
-                        @items-per-page="onItemsPerPage"
-                        v-show="perPageSelectorShown"></items-per-page>
+        <items-per-page :options="itemsPerPage" :label="itemsPerPageLabel" :defaultPerPage="defaultPerPageComputed" @items-per-page="onItemsPerPage"
+          v-show="perPageSelectorShown"></items-per-page>
       </div>
     </div>
     <div v-show="loading" class="data-table-loading">
       <slot name="loading">
-        <spring-spinner
-          slot="loading"
-          :animation-duration="2500"
-          :size="70"
-          color="#4ae387"
-        />
+        <spring-spinner slot="loading" :animation-duration="2500" :size="70" color="#4ae387" />
       </slot>
     </div>
-    <vuetable
-      ref="vuetable"
-      :apiUrl="apiUrl"
-      :apiMode="apiMode"
-      :httpFetch="httpFetch"
-      :httpOptions="httpOptions"
-      :fields="tableFields"
-      :dataManager="dataManager"
-      :css="css.table"
-      dataPath="data"
-      :paginationPath="paginationPathComputed"
-      :appendParams="moreParams"
-      :perPage="perPage"
-      :queryParams="queryParams"
-      :noDataTemplate="noDataTemplate"
-      @vuetable:pagination-data="onPaginationData"
-      @vuetable:loading="onLoading"
-      @vuetable:loaded="onLoaded"
-    />
+    <vuetable ref="vuetable" :apiUrl="apiUrl" :apiMode="apiMode" :httpFetch="httpFetch" :httpOptions="httpOptions" :fields="tableFields"
+      :dataManager="dataManager" :css="css.table" dataPath="data" :paginationPath="paginationPathComputed" :appendParams="moreParams"
+      :perPage="perPage" :queryParams="queryParams" :noDataTemplate="noDataTemplate" @vuetable:pagination-data="onPaginationData"
+      @vuetable:loading="onLoading" @vuetable:loaded="onLoaded" />
     <div class="d-flex justify-content-center mb-4">
-      <vuetable-pagination ref="pagination"
-                           :css="css.pagination"
-                           :onEachSide="onEachSide"
-                           @vuetable-pagination:change-page="onChangePage">
+      <vuetable-pagination ref="pagination" :css="css.pagination" :onEachSide="onEachSide" @vuetable-pagination:change-page="onChangePage">
 
       </vuetable-pagination>
     </div>
@@ -67,6 +36,7 @@
   import Vue from 'vue'
   import DataTableStyles from '../vuestic-datatable/data/data-table-styles'
   import SpringSpinner from 'epic-spinners/src/components/lib/SpringSpinner'
+  import moment from 'moment'
 
   export default {
     name: 'vuestic-data-table',
@@ -132,7 +102,7 @@
       },
       tableData: {
         type: Object,
-        default () {
+        default() {
           return {
             data: []
           }
@@ -153,7 +123,7 @@
         type: Object
       }
     },
-    data () {
+    data() {
       return {
         perPage: 0,
         colorClasses: {},
@@ -165,18 +135,18 @@
       }
     },
     computed: {
-      controlsAlignmentClass () {
+      controlsAlignmentClass() {
         return {
           'justify-content-md-between': this.filterInputShown,
           'justify-content-md-end': !this.filterInputShown
         }
       },
-      moreParams () {
+      moreParams() {
         return {
           [this.filterQuery]: this.filterText
         }
       },
-      dataModeFilterableFieldsComputed () {
+      dataModeFilterableFieldsComputed() {
         const dataItem = this.tableData.data[0] || {}
         const filterableFields = this.dataModeFilterableFields
 
@@ -191,7 +161,7 @@
 
         return filterableFields
       },
-      filteredTableData () {
+      filteredTableData() {
         const txt = new RegExp(this.filterText, 'i')
 
         let filteredData = this.tableData.data.slice()
@@ -207,7 +177,7 @@
           data: filteredData
         }
       },
-      defaultPerPageComputed () {
+      defaultPerPageComputed() {
         let defaultPerPage = DefaultPerPageDefinition.itemsPerPage[0].value
 
         if (this.$options.propsData.defaultPerPage) {
@@ -218,35 +188,35 @@
 
         return defaultPerPage
       },
-      paginationPathComputed () {
+      paginationPathComputed() {
         return this.apiMode ? this.paginationPath : 'pagination'
       }
     },
 
-    created () {
+    created() {
       this.perPage = this.defaultPerPageComputed
     },
 
-    mounted () {
+    mounted() {
       this.$emit('initialized', this.$refs.vuetable)
     },
 
     methods: {
-      onFilterSet (filterText) {
+      onFilterSet(filterText) {
         this.filterText = filterText
         Vue.nextTick(() => this.$refs.vuetable.refresh())
       },
-      onItemsPerPage (itemsPerPageValue) {
+      onItemsPerPage(itemsPerPageValue) {
         this.perPage = itemsPerPageValue
         Vue.nextTick(() => this.$refs.vuetable.refresh())
       },
-      onPaginationData (paginationData) {
+      onPaginationData(paginationData) {
         this.$refs.pagination.setPaginationData(paginationData)
       },
-      onChangePage (page) {
+      onChangePage(page) {
         this.$refs.vuetable.changePage(page)
       },
-      dataManager (sortOrder, pagination) {
+      dataManager(sortOrder, pagination) {
         let data = this.filteredTableData.data
         let sortFunctions = this.sortFunctions
 
@@ -271,15 +241,35 @@
           data: data.slice(pagination.from - 1, pagination.to)
         }
       },
-      onLoading () {
+      onLoading() {
         this.noDataTemplate = ''
         this.loading = true
         this.$emit('vuestic:loading')
       },
-      onLoaded () {
+      onLoaded() {
         this.noDataTemplate = this.$t('tables.dataTable.noDataAvailable')
         this.loading = false
         this.$emit('vuestic:loaded')
+      },
+      normalizeResource(value) {
+        const normalized = parseInt((1 - value) * 100, 10)
+        return normalized > 75 // TODO: greater than threshold
+          ? `<span class="table-danger">${normalized}%</span>`
+          : `${normalized}%`
+      },
+      getEquivalentState(state) {
+        if (state === 0) {
+          return '<span class="badge badge-pill badge-primary">Executing</span>'
+        } else if (state === 1) {
+          return '<span class="badge badge-pill badge-danger">Paused</span>'
+        } else {
+          return 'Unknown'
+        }
+      },
+      formatDate: function (value, fmt) {
+        if (value === null) return ''
+        fmt = (typeof fmt === 'undefined') ? 'D MMM YYYY' : fmt
+        return moment(value, 'YYYY-MM-DD').format(fmt)
       }
     }
   }
@@ -294,7 +284,8 @@
     }
 
     @media (max-width: 1258px) {
-      .pagination-link-btn:first-child, .pagination-link-btn:last-child {
+      .pagination-link-btn:first-child,
+      .pagination-link-btn:last-child {
         display: none;
       }
 

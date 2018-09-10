@@ -4,8 +4,7 @@
     <dashboard-info-widgets></dashboard-info-widgets>
 
     <vuestic-widget class="no-padding no-v-padding">
-      <vuestic-tabs
-        :names="[$t('dashboard.dataVisualization'), $t('dashboard.usersAndMembers'), $t('dashboard.setupProfile'), $t('dashboard.features')]"
+      <vuestic-tabs :names="[$t('dashboard.dataVisualization'), $t('dashboard.usersAndMembers'), $t('dashboard.setupProfile'), $t('dashboard.features')]"
         ref="tabs">
         <div :slot="$t('dashboard.dataVisualization')">
           <data-visualisation-tab></data-visualisation-tab>
@@ -47,7 +46,7 @@
     },
 
     methods: {
-      launchEpicmaxToast () {
+      launchEpicmaxToast() {
         this.showToast(`Let's work together!`, {
           icon: 'fa-star-o',
           position: 'top-right',

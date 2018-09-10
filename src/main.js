@@ -37,14 +37,11 @@ router.beforeEach((to, from, next) => {
 
     if (token) {
       next()
-    }
-    else {
+    } else {
       next({ path: '*' })
     }
-  }
-  else {
+  } else {
     next()
-
   }
 })
 

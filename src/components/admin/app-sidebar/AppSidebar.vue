@@ -28,7 +28,7 @@
           </span>
         </sidebar-link>
       </sidebar-link-group>
-      <sidebar-link :to="{ name: 'tables' }">
+      <sidebar-link :to="{ name: 'worker' }">
         <span slot="title">
           <span class="sidebar-menu-item-icon fa fa-laptop"></span>
           <span>{{ $t('menu.workers') }}</span>
@@ -46,24 +46,24 @@
 
 <script>
 
-import VuesticSidebar
-  from '../../../vuestic-theme/vuestic-components/vuestic-sidebar/VuesticSidebar'
-import SidebarLink from './components/SidebarLink'
-import SidebarLinkGroup from './components/SidebarLinkGroup'
+  import VuesticSidebar
+    from '../../../vuestic-theme/vuestic-components/vuestic-sidebar/VuesticSidebar'
+  import SidebarLink from './components/SidebarLink'
+  import SidebarLinkGroup from './components/SidebarLinkGroup'
 
-export default {
-  name: 'app-sidebar',
-  components: {
-    VuesticSidebar,
-    SidebarLink,
-    SidebarLinkGroup
-  },
-  props: {
-    isOpen: {
-      type: Boolean,
-      required: true
+  export default {
+    name: 'app-sidebar',
+    components: {
+      VuesticSidebar,
+      SidebarLink,
+      SidebarLinkGroup
+    },
+    props: {
+      isOpen: {
+        type: Boolean,
+        required: true
+      }
     }
   }
-}
 
 </script>

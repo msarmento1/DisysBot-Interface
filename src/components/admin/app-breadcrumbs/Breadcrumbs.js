@@ -16,6 +16,11 @@ export default {
       ]
     },
     {
+      path: 'worker',
+      displayName: 'menu.workers',
+      disabled: false
+    },
+    {
       path: 'dashboard',
       displayName: 'menu.dashboard'
     },
