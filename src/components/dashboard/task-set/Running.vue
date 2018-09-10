@@ -23,7 +23,7 @@
     data() {
       return {
         apiMode: true,
-        apiUrl: 'http://localhost:16181/api/v1/taskset/running',
+        apiUrl: 'http://localhost/api/v1/taskset/running',
         sortFunctions: FieldsDef.sortFunctions,
         onEachSide: 1,
         tableFields: FieldsDef.tableFields,

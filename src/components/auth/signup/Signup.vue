@@ -68,7 +68,7 @@
       signUp() {
         this
           .$http
-          .post('http://localhost:16181/api/v1/auth/signup', this.input)
+          .post('http://localhost/api/v1/auth/signup', this.input)
           .then((res) => {
             const { token } = res.body;
             localStorage.setItem('token', token)

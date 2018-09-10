@@ -50,7 +50,7 @@
       login() {
         this
           .$http
-          .post('http://localhost:16181/api/v1/auth/login', this.input) // TODO
+          .post('http://localhost/api/v1/auth/login', this.input) // TODO
           .then((res) => {
             const { token } = res.body;
             localStorage.setItem('token', token)
