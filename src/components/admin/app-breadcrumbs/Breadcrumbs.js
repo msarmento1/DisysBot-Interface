@@ -12,6 +12,10 @@ export default {
         {
           path: 'running',
           displayName: 'menu.running'
+        },
+        {
+          path: 'finished',
+          displayName: 'menu.finished'
         }
       ]
     },

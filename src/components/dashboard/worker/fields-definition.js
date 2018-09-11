@@ -22,6 +22,10 @@ export default {
       title: 'running instances'
     },
     {
+      name: 'performance.level',
+      title: 'performance'
+    },
+    {
       name: 'resource.cpu',
       title: 'cpu being used',
       callback: 'normalizeResource'
@@ -31,6 +35,11 @@ export default {
       title: 'memory being used',
       callback: 'normalizeResource'
     },
+    {
+      name: '__component:custom-actions',
+      title: '',
+      dataClass: 'text-center'
+    }
   ],
   sortFunctions: {
     'name': function (item1, item2) {

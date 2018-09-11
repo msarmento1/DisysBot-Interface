@@ -1,5 +1,3 @@
-// import moment from 'moment'
-
 export default {
   tableFields: [
     {
@@ -8,17 +6,13 @@ export default {
       sortField: 'name'
     },
     {
-      name: 'remainingTasksCount',
-      title: 'remaining tasks',
-      sortField: 'remainingTasksCount'
-    },
-    {
-      name: 'priority',
-      title: 'priority'
-    },
-    {
       name: 'startTime',
       title: 'start time',
+      callback: 'formatDate|DD/MM/YYYY, h:mm:ss a'
+    },
+    {
+      name: 'endTime',
+      title: 'end time',
       callback: 'formatDate|DD/MM/YYYY, h:mm:ss a'
     },
     {

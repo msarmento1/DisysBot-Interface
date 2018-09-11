@@ -90,6 +90,14 @@ export default new Router({
                 requiresAuth: true
               },
               component: lazyLoading('dashboard/task-set/running/Running')
+            },
+            {
+              name: 'finished',
+              path: 'finished',
+              meta: {
+                requiresAuth: true
+              },
+              component: lazyLoading('dashboard/task-set/finished/Finished')
             }
           ]
         },
