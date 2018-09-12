@@ -26,7 +26,7 @@
         } else if (action === 'edit-item') {
 
         } else if (action === 'delete-item') {
-          this.$http.post('http://localhost/api/v1/taskset/delete', { token, id: data._id }).catch(() => { })
+          this.$http.post('http://localhost/api/v1/taskset/delete', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
         }
       }
     }
@@ -34,5 +34,4 @@
 </script>
 
 <style>
-
 </style>

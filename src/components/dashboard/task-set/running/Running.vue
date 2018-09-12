@@ -3,8 +3,7 @@
     <div>
       <vuestic-widget :headerText="$t('menu.running')">
         <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpFetch="fetch" :tableFields="tableFields"
-          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions"
-          :dataModeFilterableFields="dataModeFilterableFields">
+          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
         </vuestic-data-table>
       </vuestic-widget>
     </div>
@@ -46,7 +45,9 @@
     methods: {
       fetch(apiUrl, httpOptions) {
         const token = localStorage.getItem('token')
-        return this.$http.get(apiUrl, { params: { token } })
+        return this.$http.get(apiUrl, {
+          headers: { 'x-access-token': token }
+        })
       }
     },
     mounted() {

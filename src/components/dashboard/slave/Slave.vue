@@ -44,7 +44,9 @@
     methods: {
       fetch(apiUrl) {
         const token = localStorage.getItem('token')
-        return this.$http.get(apiUrl, { params: { token } })
+        return this.$http.get(apiUrl, {
+          headers: { 'x-access-token': token }
+        })
       }
     },
     mounted() {
