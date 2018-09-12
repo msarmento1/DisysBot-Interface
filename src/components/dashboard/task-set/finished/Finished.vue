@@ -16,7 +16,7 @@
   import Vue from 'vue'
   import CustomActions from './CustomActions'
 
-  Vue.component('custom-actions', CustomActions)
+  Vue.component('finished-custom-actions', CustomActions)
 
   export default {
     name: 'finished',

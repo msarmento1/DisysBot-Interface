@@ -102,12 +102,12 @@ export default new Router({
           ]
         },
         {
-          name: 'worker',
-          path: 'worker',
+          name: 'slave',
+          path: 'slave',
           meta: {
             requiresAuth: true
           },
-          component: lazyLoading('dashboard/worker/Worker')
+          component: lazyLoading('dashboard/slave/Slave')
         },
         {
           name: 'dashboard',

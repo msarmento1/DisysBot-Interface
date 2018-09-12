@@ -6,8 +6,8 @@
         <div class="form-group">
           <slot name="additionalTableControl"></slot>
         </div>
-        <items-per-page :options="itemsPerPage" :label="itemsPerPageLabel" :defaultPerPage="defaultPerPageComputed" @items-per-page="onItemsPerPage"
-          v-show="perPageSelectorShown"></items-per-page>
+        <items-per-page :options="itemsPerPage" :label="itemsPerPageLabel" :defaultPerPage="defaultPerPageComputed"
+          @items-per-page="onItemsPerPage" v-show="perPageSelectorShown"></items-per-page>
       </div>
     </div>
     <div v-show="loading" class="data-table-loading">
@@ -15,12 +15,13 @@
         <spring-spinner slot="loading" :animation-duration="2500" :size="70" color="#4ae387" />
       </slot>
     </div>
-    <vuetable ref="vuetable" :apiUrl="apiUrl" :apiMode="apiMode" :httpFetch="httpFetch" :httpOptions="httpOptions" :fields="tableFields"
-      :dataManager="dataManager" :css="css.table" dataPath="data" :paginationPath="paginationPathComputed" :appendParams="moreParams"
-      :perPage="perPage" :queryParams="queryParams" :noDataTemplate="noDataTemplate" @vuetable:pagination-data="onPaginationData"
-      @vuetable:loading="onLoading" @vuetable:loaded="onLoaded" />
+    <vuetable ref="vuetable" :apiUrl="apiUrl" :apiMode="apiMode" :httpFetch="httpFetch" :httpOptions="httpOptions"
+      :fields="tableFields" :dataManager="dataManager" :css="css.table" dataPath="data" :paginationPath="paginationPathComputed"
+      :appendParams="moreParams" :perPage="perPage" :queryParams="queryParams" :noDataTemplate="noDataTemplate"
+      @vuetable:pagination-data="onPaginationData" @vuetable:loading="onLoading" @vuetable:loaded="onLoaded" />
     <div class="d-flex justify-content-center mb-4">
-      <vuetable-pagination ref="pagination" :css="css.pagination" :onEachSide="onEachSide" @vuetable-pagination:change-page="onChangePage">
+      <vuetable-pagination ref="pagination" :css="css.pagination" :onEachSide="onEachSide"
+        @vuetable-pagination:change-page="onChangePage">
 
       </vuetable-pagination>
     </div>
@@ -284,6 +285,7 @@
     }
 
     @media (max-width: 1258px) {
+
       .pagination-link-btn:first-child,
       .pagination-link-btn:last-child {
         display: none;

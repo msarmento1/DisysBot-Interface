@@ -1,9 +1,9 @@
 <template>
   <div class="data-visualisation-tab dashboard-tab">
     <div>
-      <vuestic-widget :headerText="$t('menu.workers')">
+      <vuestic-widget :headerText="$t('menu.slaves')">
         <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpFetch="fetch" :tableFields="tableFields"
-          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
+          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions">
         </vuestic-data-table>
       </vuestic-widget>
     </div>
@@ -12,19 +12,22 @@
 
 <script>
   import FieldsDef from './fields-definition'
+  import Vue from 'vue'
+  import CustomActions from './CustomActions'
+
+  Vue.component('slave-custom-actions', CustomActions)
 
   export default {
-    name: 'worker',
+    name: 'slave',
 
     data() {
       return {
         interval: {},
         apiMode: true,
-        apiUrl: 'http://localhost/api/v1/worker',
+        apiUrl: 'http://localhost/api/v1/slave',
         sortFunctions: FieldsDef.sortFunctions,
         onEachSide: 1,
         tableFields: FieldsDef.tableFields,
-        dataModeFilterableFields: ['name'],
         itemsPerPage: [
           {
             value: 10

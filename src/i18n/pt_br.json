@@ -189,7 +189,7 @@
     "running": "Em execução",
     "finished": "Acabado",
     "add": "Adicionar",
-    "workers": "Trabalhadores",
+    "slaves": "Escravos",
     "logs": "Registros"
   },
   "messages": {

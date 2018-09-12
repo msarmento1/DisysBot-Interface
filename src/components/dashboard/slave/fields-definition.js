@@ -36,8 +36,9 @@ export default {
       callback: 'normalizeResource'
     },
     {
-      name: '__component:custom-actions',
-      title: '',
+      name: '__component:slave-custom-actions',
+      title: 'commands',
+      titleClass: 'text-center',
       dataClass: 'text-center'
     }
   ],

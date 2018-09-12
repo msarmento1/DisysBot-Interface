@@ -171,7 +171,7 @@
     "running": "En ejecución",
     "finished": "Terminado",
     "add": "Añadir",
-    "workers": "Trabajadores",
+    "slaves": "Esclavos",
     "logs": "Registros"
   },
   "messages": {

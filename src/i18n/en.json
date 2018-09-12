@@ -200,7 +200,7 @@
     "running": "Running",
     "finished": "Finished",
     "add": "Add",
-    "workers": "Workers",
+    "slaves": "Slaves",
     "logs": "Logs"
   },
   "messages": {

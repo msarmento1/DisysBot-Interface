@@ -28,10 +28,10 @@
           </span>
         </sidebar-link>
       </sidebar-link-group>
-      <sidebar-link :to="{ name: 'worker' }">
+      <sidebar-link :to="{ name: 'slave' }">
         <span slot="title">
           <span class="sidebar-menu-item-icon fa fa-laptop"></span>
-          <span>{{ $t('menu.workers') }}</span>
+          <span>{{ $t('menu.slaves') }}</span>
         </span>
       </sidebar-link>
       <sidebar-link :to="{ name: 'tables' }">

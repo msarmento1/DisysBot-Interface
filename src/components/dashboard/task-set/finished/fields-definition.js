@@ -16,7 +16,7 @@ export default {
       callback: 'formatDate|DD/MM/YYYY, h:mm:ss a'
     },
     {
-      name: '__component:custom-actions',
+      name: '__component:finished-custom-actions',
       title: '',
       dataClass: 'text-center'
     }

@@ -3,7 +3,8 @@
     <div>
       <vuestic-widget :headerText="$t('menu.running')">
         <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpFetch="fetch" :tableFields="tableFields"
-          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
+          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions"
+          :dataModeFilterableFields="dataModeFilterableFields">
         </vuestic-data-table>
       </vuestic-widget>
     </div>
@@ -15,7 +16,7 @@
   import Vue from 'vue'
   import CustomActions from './CustomActions'
 
-  Vue.component('custom-actions', CustomActions)
+  Vue.component('running-custom-actions', CustomActions)
 
   export default {
     name: 'running',

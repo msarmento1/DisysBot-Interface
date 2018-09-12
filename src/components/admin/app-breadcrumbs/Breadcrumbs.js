@@ -20,8 +20,8 @@ export default {
       ]
     },
     {
-      path: 'worker',
-      displayName: 'menu.workers',
+      path: 'slave',
+      displayName: 'menu.slave',
       disabled: false
     },
     {

@@ -18,8 +18,16 @@
       }
     },
     methods: {
-      itemAction (action, data, index) {
-        console.log('custom-actions: ' + action, data.id, index)
+      itemAction(action, data, index) {
+        const token = localStorage.getItem('token')
+
+        if (action === 'view-item') {
+
+        } else if (action === 'edit-item') {
+
+        } else if (action === 'delete-item') {
+          this.$http.post('http://localhost/api/v1/taskset/delete', { token, id: data._id }).catch(() => { })
+        }
       }
     }
   }
