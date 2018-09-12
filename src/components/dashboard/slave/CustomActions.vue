@@ -1,8 +1,8 @@
 <template>
   <div class="btn-group">
-    <button class="btn btn-outline-dark btn-micro" @click="itemAction('view-item', rowData, rowIndex)"><i class="fa fa-pause"></i></button>
-    <button class="btn btn-outline-dark btn-micro" @click="itemAction('edit-item', rowData, rowIndex)"><i class="fa fa-play"></i></button>
-    <button class="btn btn-outline-dark btn-micro" @click="itemAction('delete-item', rowData, rowIndex)"><i class="fa fa-stop"></i></button>
+    <button class="btn btn-outline-dark btn-micro" @click="itemAction('pause-item', rowData, rowIndex)"><i class="fa fa-pause"></i></button>
+    <button class="btn btn-outline-dark btn-micro" @click="itemAction('resume-item', rowData, rowIndex)"><i class="fa fa-play"></i></button>
+    <button class="btn btn-outline-dark btn-micro" @click="itemAction('stop-item', rowData, rowIndex)"><i class="fa fa-stop"></i></button>
   </div>
 </template>
 
@@ -19,12 +19,19 @@
     },
     methods: {
       itemAction(action, data, index) {
-        console.log('custom-actions: ' + action, data.id, index)
+        const token = localStorage.getItem('token')
+
+        if (action === 'pause-item') {
+          this.$http.post('http://localhost/api/v1/slave/pause', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+        } else if (action === 'resume-item') {
+          this.$http.post('http://localhost/api/v1/slave/resume', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+        } else if (action === 'stop-item') {
+          this.$http.post('http://localhost/api/v1/slave/stop', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+        }
       }
     }
   }
 </script>
 
 <style>
-
 </style>

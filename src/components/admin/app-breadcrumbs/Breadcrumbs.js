@@ -21,7 +21,7 @@ export default {
     },
     {
       path: 'slave',
-      displayName: 'menu.slave',
+      displayName: 'menu.slaves',
       disabled: false
     },
     {
