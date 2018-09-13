@@ -25,6 +25,11 @@ export default {
       disabled: false
     },
     {
+      path: 'sys-log',
+      displayName: 'menu.logs',
+      disabled: false
+    },
+    {
       path: 'dashboard',
       displayName: 'menu.dashboard'
     },

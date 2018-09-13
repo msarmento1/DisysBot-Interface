@@ -1,9 +1,9 @@
 <template>
-  <div class="data-visualisation-tab dashboard-tab">
+  <div class="dashboard-tab">
     <div>
-      <vuestic-widget :headerText="$t('menu.running')">
-        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions" :tableFields="tableFields"
-          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
+      <vuestic-widget :headerText="$t('menu.logs')">
+        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions"
+          :apiUrl="apiUrl" :httpOptions="httpOptions" :tableFields="tableFields">
         </vuestic-data-table>
       </vuestic-widget>
     </div>
@@ -12,19 +12,15 @@
 
 <script>
   import FieldsDef from './fields-definition'
-  import Vue from 'vue'
-  import CustomActions from './CustomActions'
-
-  Vue.component('running-custom-actions', CustomActions)
 
   export default {
-    name: 'running',
+    name: 'log',
 
     data() {
       return {
         interval: {},
         apiMode: true,
-        apiUrl: 'http://localhost/api/v1/taskset/running',
+        apiUrl: 'http://localhost/api/v1/sys-log',
         httpOptions: {
           headers: {
             'x-access-token': localStorage.getItem('token')
@@ -33,7 +29,6 @@
         sortFunctions: FieldsDef.sortFunctions,
         onEachSide: 1,
         tableFields: FieldsDef.tableFields,
-        dataModeFilterableFields: ['name'],
         itemsPerPage: [
           {
             value: 10

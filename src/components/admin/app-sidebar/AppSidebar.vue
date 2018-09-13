@@ -34,7 +34,7 @@
           <span>{{ $t('menu.slaves') }}</span>
         </span>
       </sidebar-link>
-      <sidebar-link :to="{ name: 'tables' }">
+      <sidebar-link :to="{ name: 'sys-log' }">
         <span slot="title">
           <span class="sidebar-menu-item-icon fa fa-file-text-o"></span>
           <span>{{ $t('menu.logs') }}</span>

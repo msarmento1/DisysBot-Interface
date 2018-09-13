@@ -2,9 +2,8 @@
   <div class="data-visualisation-tab dashboard-tab">
     <div>
       <vuestic-widget :headerText="$t('menu.finished')">
-        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpFetch="fetch" :tableFields="tableFields"
-          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions"
-          :dataModeFilterableFields="dataModeFilterableFields">
+        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions" :tableFields="tableFields"
+          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
         </vuestic-data-table>
       </vuestic-widget>
     </div>
@@ -26,6 +25,11 @@
         interval: {},
         apiMode: true,
         apiUrl: 'http://localhost/api/v1/taskset/finished',
+        httpOptions: {
+          headers: {
+            'x-access-token': localStorage.getItem('token')
+          }
+        },
         sortFunctions: FieldsDef.sortFunctions,
         onEachSide: 1,
         tableFields: FieldsDef.tableFields,
@@ -41,14 +45,6 @@
             value: 20
           }
         ],
-      }
-    },
-    methods: {
-      fetch(apiUrl, httpOptions) {
-        const token = localStorage.getItem('token')
-        return this.$http.get(apiUrl, {
-          headers: { 'x-access-token': token }
-        })
       }
     },
     mounted() {

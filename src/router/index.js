@@ -118,6 +118,14 @@ export default new Router({
           component: lazyLoading('dashboard/slave/Slave')
         },
         {
+          name: 'sys-log',
+          path: 'sys-log',
+          meta: {
+            requiresAuth: true
+          },
+          component: lazyLoading('dashboard/sys-log/SysLog')
+        },
+        {
           name: 'dashboard',
           path: 'dashboard',
           meta: {
