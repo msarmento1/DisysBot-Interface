@@ -21,12 +21,6 @@
         <router-link class='link' :to="{name: 'signup'}">{{'auth.createAccount' | translate}}</router-link>
       </div>
     </form>
-    <vuestic-modal :show.sync="show" v-bind:small="true" v-bind:force="true" ref="modal" :cancelClass="'none'" :okText="'modal.close' | translate">
-      <div slot="title">{{modal.title}}</div>
-      <div>
-        {{modal.message}}
-      </div>
-    </vuestic-modal>
   </div>
 </template>
 
@@ -39,10 +33,6 @@
         input: {
           email: '',
           password: ''
-        },
-        modal: {
-          title: '',
-          message: ''
         }
       }
     },
@@ -57,14 +47,13 @@
             this.$router.push('/admin/dashboard')
           })
           .catch((e) => {
-            this.modal.title = 'Error'
-            this.modal.message = e.body.reason
+            let message = e.body
 
-            if (!this.modal.message) {
-              this.modal.message = 'API server is unreachable'
+            if (e.status === 0) {
+              message = 'API server is unreachable'
             }
 
-            this.$refs.modal.open()
+            this.$emit('modalEvent', { title: 'Error', message });
           })
       }
     },

@@ -22,7 +22,7 @@
       </div>
       <div class="form-group">
         <div class="input-group">
-          <input type="password" id="confirm-password" v-model="input.confirmPassord" required="required" />
+          <input type="password" id="confirm-password" v-model="input.confirmPassword" required="required" />
           <label class="control-label" for="confirm-password">{{'auth.confirmPassword' | translate}}</label><i class="bar"></i>
         </div>
       </div>
@@ -38,12 +38,6 @@
         <router-link class='link' :to="{name: 'login'}">{{'auth.alreadyJoined' | translate}}</router-link>
       </div>
     </form>
-    <vuestic-modal :show.sync="show" v-bind:small="true" v-bind:force="true" ref="modal" :cancelClass="'none'" :okText="'modal.close' | translate">
-      <div slot="title">{{'modal.title' | translate}}</div>
-      <div>
-        {{'modal.message' | translate}}
-      </div>
-    </vuestic-modal>
   </div>
 </template>
 
@@ -52,15 +46,11 @@
     name: 'signup',
     data() {
       return {
-        show: true,
         checkboxOneModel: true,
         input: {
           username: '',
-          password: ''
-        },
-        modal: {
-          title: '',
-          message: ''
+          password: '',
+          confirmPassword: ''
         }
       }
     },
@@ -75,9 +65,13 @@
             this.$router.push('/admin/dashboard')
           })
           .catch((e) => {
-            this.modal.title = 'Error'
-            this.modal.message = e.body.reason
-            this.$refs.modal.open()
+            let message = e.body
+
+            if (e.status === 0) {
+              message = 'API server is unreachable'
+            }
+
+            this.$emit('modalEvent', { title: 'Error', message });
           })
       }
     }

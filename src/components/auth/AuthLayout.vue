@@ -1,19 +1,38 @@
 <template>
   <div class="auth-layout">
-    <div class="nav d-lg-none">
-      <router-link class="i-vuestic" :to="{path: '/'}"></router-link>
-    </div>
     <div class="main row">
       <div class="auth-content col-12">
-        <router-view></router-view>
+        <router-view v-on:modalEvent="modalEvent($event)"></router-view>
       </div>
     </div>
+
+    <vuestic-modal :show.sync="show" v-bind:small="true" v-bind:force="true" ref="modal" :cancelClass="'none'" :okText="'modal.close' | translate">
+      <div slot="title">{{modal.title}}</div>
+      <div>
+        {{modal.message}}
+      </div>
+    </vuestic-modal>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'AuthLayout'
+    name: 'AuthLayout',
+    data() {
+      return {
+        show: true,
+        modal: {
+          title: '',
+          message: ''
+        }
+      }
+    },
+    methods: {
+      modalEvent(data) {
+        this.modal = data;
+        this.$refs.modal.open()
+      }
+    }
   }
 </script>
 
