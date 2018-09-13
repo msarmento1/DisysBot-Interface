@@ -26,7 +26,15 @@ export default new Router({
     ...demoRoutes,
     {
       path: '*',
-      redirect: { name: 'login' },
+      redirect: () => {
+        const token = localStorage.getItem('token')
+
+        if (!token) {
+          return { name: 'login' }
+        } else {
+          return { name: 'dashboard' }
+        }
+      },
     },
     {
       path: '/auth',
