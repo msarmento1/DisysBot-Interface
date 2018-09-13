@@ -25,6 +25,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     name: 'login',
     data() {
@@ -38,19 +40,20 @@
     },
     methods: {
       login() {
-        this
-          .$http
+        axios
           .post('http://localhost/api/v1/auth/login', this.input) // TODO
           .then((res) => {
-            const { token } = res.body;
+            const { token } = res.data;
             localStorage.setItem('token', token)
             this.$router.push('/admin/dashboard')
           })
           .catch((e) => {
-            let message = e.body
+            let message = '';
 
-            if (e.status === 0) {
+            if (!e.response) {
               message = 'API server is unreachable'
+            } else {
+              message = e.response.data
             }
 
             this.$emit('modalEvent', { title: 'Error', message });

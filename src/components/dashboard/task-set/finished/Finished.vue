@@ -1,13 +1,10 @@
 <template>
-  <div class="data-visualisation-tab dashboard-tab">
-    <div>
-      <vuestic-widget :headerText="$t('menu.finished')">
-        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions" :tableFields="tableFields"
-          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
-        </vuestic-data-table>
-      </vuestic-widget>
-    </div>
-  </div>
+  <vuestic-widget :headerText="$t('menu.finished')">
+    <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions"
+      :tableFields="tableFields" :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions"
+      :dataModeFilterableFields="dataModeFilterableFields">
+    </vuestic-data-table>
+  </vuestic-widget>
 </template>
 
 <script>

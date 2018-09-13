@@ -7,6 +7,8 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     props: {
       rowData: {
@@ -22,11 +24,11 @@
         const token = localStorage.getItem('token')
 
         if (action === 'pause-item') {
-          this.$http.post('http://localhost/api/v1/slave/pause', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+          axios.post('http://localhost/api/v1/slave/pause', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
         } else if (action === 'resume-item') {
-          this.$http.post('http://localhost/api/v1/slave/resume', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+          axios.post('http://localhost/api/v1/slave/resume', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
         } else if (action === 'stop-item') {
-          this.$http.post('http://localhost/api/v1/slave/stop', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+          axios.post('http://localhost/api/v1/slave/stop', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
         }
       }
     }
