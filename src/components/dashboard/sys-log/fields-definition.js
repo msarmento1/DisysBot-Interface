@@ -8,6 +8,7 @@ export default {
     {
       name: 'date',
       title: 'date',
+      sortField: 'date',
       callback: 'formatDate|DD/MM/YYYY, HH:mm:ss.SSS Z'
     },
     {

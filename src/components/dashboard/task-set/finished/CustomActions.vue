@@ -30,6 +30,8 @@
         } else if (action === 'delete-item') {
           axios.post('http://localhost/api/v1/taskset/delete', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
         }
+
+        setTimeout(() => { this.$parent.reload() }, 500)
       }
     }
   }
