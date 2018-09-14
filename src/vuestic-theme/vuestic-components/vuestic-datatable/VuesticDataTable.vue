@@ -267,6 +267,23 @@
           return 'Unknown'
         }
       },
+      getEquivalentLogLevel(level) {
+        if (level === 0) {
+          return '<span class="badge badge-pill badge-primary">Trace</span>'
+        } else if (level === 1) {
+          return '<span class="badge badge-pill badge-success">Debug</span>'
+        } else if (level === 2) {
+          return '<span class="badge badge-pill badge-info">Info</span>'
+        } else if (level === 3) {
+          return '<span class="badge badge-pill badge-warning">Warning</span>'
+        } else if (level === 4) {
+          return '<span class="badge badge-pill badge-danger">Error</span>'
+        } else if (level === 5) {
+          return '<span class="badge badge-pill badge-dark">Fatal</span>'
+        } else {
+          return 'Unknown'
+        }
+      },
       formatDate: function (value, fmt) {
         if (value === null) return ''
         fmt = (typeof fmt === 'undefined') ? 'D MMM YYYY' : fmt

@@ -48,7 +48,7 @@
     mounted() {
       this.$nextTick(() => {
         this.interval = setInterval(() => {
-          this.$refs.vuesticDataTable.$refs.vuetable.refresh()
+          this.$refs.vuesticDataTable.$refs.vuetable.reload()
         }, 5000)
       })
     },

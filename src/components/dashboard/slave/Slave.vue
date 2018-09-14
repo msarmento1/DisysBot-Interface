@@ -2,8 +2,8 @@
   <div class="dashboard-tab">
     <div>
       <vuestic-widget :headerText="$t('menu.slaves')">
-        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions" :tableFields="tableFields"
-          :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions">
+        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions"
+          :tableFields="tableFields" :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions">
         </vuestic-data-table>
       </vuestic-widget>
     </div>
@@ -49,7 +49,7 @@
     mounted() {
       this.$nextTick(() => {
         this.interval = setInterval(() => {
-          this.$refs.vuesticDataTable.$refs.vuetable.refresh()
+          this.$refs.vuesticDataTable.$refs.vuetable.reload()
         }, 5000)
       })
     },
