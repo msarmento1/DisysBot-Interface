@@ -6,13 +6,13 @@ export default {
       callback: 'getEquivalentLogLevel'
     },
     {
-      name: 'log',
-      title: 'log'
-    },
-    {
       name: 'date',
       title: 'date',
-      callback: 'formatDate|DD/MM/YYYY, hh:mm:ss a'
+      callback: 'formatDate|DD/MM/YYYY, HH:mm:ss.SSS Z'
+    },
+    {
+      name: 'log',
+      title: 'log'
     }
   ],
   sortFunctions: {

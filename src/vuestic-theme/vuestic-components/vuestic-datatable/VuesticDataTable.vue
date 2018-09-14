@@ -285,9 +285,10 @@
         }
       },
       formatDate: function (value, fmt) {
+        console.log(value)
         if (value === null) return ''
         fmt = (typeof fmt === 'undefined') ? 'D MMM YYYY' : fmt
-        return moment(value, 'YYYY-MM-DD').format(fmt)
+        return moment(value, 'YYYY-MM-DD HH:mm:ss.SSS Z').format(fmt)
       }
     }
   }
