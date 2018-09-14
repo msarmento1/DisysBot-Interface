@@ -50,7 +50,7 @@
 </script>
 
 <style lang="scss">
-  $datepickerActive: $vue-green;
+  $datepickerActive: $brand-primary;
   $datepickerBackground: #333333;
   $datepickerText: $white;
 

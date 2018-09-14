@@ -200,7 +200,7 @@
   }
 
   .cards-label {
-    color: $vue-green;
+    color: $brand-primary;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;

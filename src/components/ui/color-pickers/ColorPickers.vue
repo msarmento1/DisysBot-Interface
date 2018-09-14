@@ -136,7 +136,7 @@ export default {
   }
 
   &__text {
-    color: $vue-green;
+    color: $brand-primary;
   }
 
   &__text-advanced {

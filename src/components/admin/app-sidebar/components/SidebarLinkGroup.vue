@@ -91,7 +91,7 @@
   }
 
   .expand-icon {
-    color: $vue-green;
+    color: $brand-primary;
   }
 
 </style>

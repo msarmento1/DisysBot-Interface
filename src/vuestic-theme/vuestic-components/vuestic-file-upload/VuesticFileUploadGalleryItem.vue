@@ -101,7 +101,7 @@
       left: 0;
       flex-direction: column;
       padding: 0.5rem;
-      background: rgba($vue-green, 0.8);
+      background: rgba($brand-primary, 0.8);
       z-index: 1;
     }
     &-image {

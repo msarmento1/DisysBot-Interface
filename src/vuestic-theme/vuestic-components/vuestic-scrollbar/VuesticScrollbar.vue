@@ -176,7 +176,7 @@
           transition: height .3s linear, opacity .6s linear;
           position: absolute;
           width: 100%;
-          background-color: $vue-green;
+          background-color: $brand-primary;
           opacity: 0;
           &.active {
             opacity: .3;
