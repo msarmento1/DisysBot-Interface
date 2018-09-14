@@ -24,7 +24,7 @@
           <form v-on:submit.prevent="">
             <div class="form-group with-icon-right form-group-w-btn" :class="{'has-error': errors.has('taskDispatchInterval')}">
               <div class="input-group">
-                <input name="taskDispatchInterval" min="1" type="number" v-model="master.taskDispatchInterval" v-validate="'min_value=1'"
+                <input name="taskDispatchInterval" min="1" type="number" v-model="master.taskDispatchInterval" v-validate="'min_value:1'"
                   title="" required />
                 <i class="fa fa-exclamation-triangle error-icon icon-right input-icon"></i>
                 <i class="fa fa-check valid-icon icon-right input-icon"></i>
