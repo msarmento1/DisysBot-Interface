@@ -1,13 +1,9 @@
 <template>
-  <div class="dashboard-tab">
-    <div>
-      <vuestic-widget :headerText="$t('menu.slaves')">
-        <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions"
-          :tableFields="tableFields" :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions">
-        </vuestic-data-table>
-      </vuestic-widget>
-    </div>
-  </div>
+  <vuestic-widget :headerText="$t('menu.slaves')">
+    <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions" :tableFields="tableFields"
+      :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions">
+    </vuestic-data-table>
+  </vuestic-widget>
 </template>
 
 <script>
@@ -27,7 +23,7 @@
         apiUrl: 'http://localhost/api/v1/slave',
         httpOptions: {
           headers: {
-            'x-access-token': localStorage.getItem('token')
+            'x-access-token': JSON.parse(localStorage.getItem('userInfo')).token
           }
         },
         sortFunctions: FieldsDef.sortFunctions,

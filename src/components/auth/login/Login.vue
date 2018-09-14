@@ -43,8 +43,8 @@
         axios
           .post('http://localhost/api/v1/auth/login', this.input) // TODO
           .then((res) => {
-            const { token } = res.data;
-            localStorage.setItem('token', token)
+            const userInfo = res.data;
+            localStorage.setItem('userInfo', JSON.stringify(userInfo))
             this.$router.push('/admin/dashboard')
           })
           .catch((e) => {
@@ -61,7 +61,7 @@
       }
     },
     beforeMount() {
-      localStorage.removeItem('token')
+      localStorage.removeItem('userInfo')
     }
   }
 </script>

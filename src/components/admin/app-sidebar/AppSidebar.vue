@@ -40,6 +40,12 @@
           <span>{{ $t('menu.logs') }}</span>
         </span>
       </sidebar-link>
+      <sidebar-link v-if="isAdmin" :to="{ name: 'settings' }">
+        <span slot="title">
+          <span class="sidebar-menu-item-icon fa fa-gear"></span>
+          <span>{{ $t('menu.settings') }}</span>
+        </span>
+      </sidebar-link>
     </template>
   </vuestic-sidebar>
 </template>
@@ -53,6 +59,11 @@
 
   export default {
     name: 'app-sidebar',
+    data() {
+      return {
+        isAdmin: JSON.parse(localStorage.getItem('userInfo')).isAdmin
+      }
+    },
     components: {
       VuesticSidebar,
       SidebarLink,

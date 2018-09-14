@@ -27,7 +27,7 @@ export default new Router({
     {
       path: '*',
       redirect: () => {
-        const token = localStorage.getItem('token')
+        const { token } = JSON.parse(localStorage.getItem('userInfo'))
 
         if (!token) {
           return { name: 'login' }
@@ -124,6 +124,14 @@ export default new Router({
             requiresAuth: true
           },
           component: lazyLoading('dashboard/sys-log/SysLog')
+        },
+        {
+          name: 'settings',
+          path: 'settings',
+          meta: {
+            requiresAuth: true
+          },
+          component: lazyLoading('dashboard/settings/Settings')
         },
         {
           name: 'dashboard',

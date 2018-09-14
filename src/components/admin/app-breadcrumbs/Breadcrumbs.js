@@ -30,6 +30,11 @@ export default {
       disabled: false
     },
     {
+      path: 'settings',
+      displayName: 'menu.settings',
+      disabled: false
+    },
+    {
       path: 'dashboard',
       displayName: 'menu.dashboard'
     },

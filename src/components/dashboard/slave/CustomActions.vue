@@ -22,7 +22,7 @@
     },
     methods: {
       itemAction(action, data, index) {
-        const token = localStorage.getItem('token')
+        const { token } = JSON.parse(localStorage.getItem('userInfo'))
 
         if (action === 'pause-item') {
           this.$refs.pause.disabled = true
@@ -32,7 +32,9 @@
             .then(() => {
               this.$refs.pause.disabled = false
             })
-            .catch(() => { })
+            .catch(() => {
+              this.$refs.pause.disabled = false
+            })
         } else if (action === 'resume-item') {
           this.$refs.resume.disabled = true
 
@@ -41,7 +43,9 @@
             .then(() => {
               this.$refs.resume.disabled = false
             })
-            .catch(() => { })
+            .catch(() => {
+              this.$refs.resume.disabled = false
+            })
         } else if (action === 'stop-item') {
           this.$refs.stop.disabled = true
 
@@ -50,7 +54,9 @@
             .then(() => {
               this.$refs.stop.disabled = false
             })
-            .catch(() => { })
+            .catch(() => {
+              this.$refs.stop.disabled = false
+            })
         }
       }
     }

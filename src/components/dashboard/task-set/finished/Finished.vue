@@ -24,7 +24,7 @@
         apiUrl: 'http://localhost/api/v1/taskset/finished',
         httpOptions: {
           headers: {
-            'x-access-token': localStorage.getItem('token')
+            'x-access-token': JSON.parse(localStorage.getItem('userInfo')).token
           }
         },
         sortFunctions: FieldsDef.sortFunctions,

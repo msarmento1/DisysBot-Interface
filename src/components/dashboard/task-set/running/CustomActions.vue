@@ -22,7 +22,7 @@
     },
     methods: {
       itemAction(action, data, index) {
-        const token = localStorage.getItem('token')
+        const { token } = JSON.parse(localStorage.getItem('userInfo'))
 
         if (action === 'view-item') {
 
@@ -37,7 +37,9 @@
               this.$refs.delete.disabled = false
               this.$parent.reload()
             })
-            .catch(() => { })
+            .catch(() => {
+              this.$refs.delete.disabled = false
+            })
         }
       }
     }

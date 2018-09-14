@@ -201,7 +201,20 @@
     "finished": "Finished",
     "add": "Add",
     "slaves": "Slaves",
-    "logs": "Logs"
+    "logs": "Logs",
+    "settings": "Settings"
+  },
+  "settings": {
+    "masterRelated": "Master Related Settings",
+    "slaveRelated": "Slave Related Settings",
+    "master": {
+      "resourceRequestInterval": "Resource Request Interval (seconds)",
+      "taskDispatchInterval": "Task Dispatch Interval (seconds)"
+    },
+    "slave": {
+      "cpuThreshold": "CPU Threshold",
+      "memoryThreshold": "Memory Threshold"
+    }
   },
   "messages": {
     "all": "See all messages",

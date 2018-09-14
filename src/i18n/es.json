@@ -172,7 +172,20 @@
     "finished": "Terminado",
     "add": "Añadir",
     "slaves": "Esclavos",
-    "logs": "Registros"
+    "logs": "Registros",
+    "settings": "Configuraciones"
+  },
+  "settings": {
+    "masterRelated": "Configuraciones Relacionadas con el Amo",
+    "slaveRelated": "Configuraciones Relacionadas con Esclavos",
+    "master": {
+      "resourceRequestInterval": "Intervalo de Solicitud de Recursos (segundos)",
+      "taskDispatchInterval": "Intervalo de Despacho de Tareas (segundos)"
+    },
+    "slave": {
+      "cpuThreshold": "Límite de UPC",
+      "memoryThreshold": "Límite de Memoria"
+    }
   },
   "messages": {
     "all": "Ver todos los mensajes",

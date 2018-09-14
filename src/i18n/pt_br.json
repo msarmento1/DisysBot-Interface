@@ -190,7 +190,20 @@
     "finished": "Acabado",
     "add": "Adicionar",
     "slaves": "Escravos",
-    "logs": "Registros"
+    "logs": "Registros",
+    "settings": "Configurações"
+  },
+  "settings": {
+    "masterRelated": "Configurações Relacionadas com o Mestre",
+    "slaveRelated": "Configurações Relacionadas com Escravos",
+    "master": {
+      "resourceRequestInterval": "Intervalo de Pedido de Recursos (segundos)",
+      "taskDispatchInterval": "Intervalo de Envio de Tarefas (segundos)"
+    },
+    "slave": {
+      "cpuThreshold": "Limite de CPU",
+      "memoryThreshold": "Limite de Memória"
+    }
   },
   "messages": {
     "all": "Ver todas as menssagens",

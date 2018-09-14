@@ -31,7 +31,7 @@ let mediaHandler = () => {
 router.beforeEach((to, from, next) => {
   store.commit('setLoading', true)
   if (to.meta.requiresAuth) {
-    const token = localStorage.getItem('token')
+    const { token } = JSON.parse(localStorage.getItem('userInfo'))
 
     if (token) {
       next()
