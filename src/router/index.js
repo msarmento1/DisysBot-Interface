@@ -27,7 +27,13 @@ export default new Router({
     {
       path: '*',
       redirect: () => {
-        const { token } = JSON.parse(localStorage.getItem('userInfo'))
+        const userInfo = localStorage.getItem('userInfo')
+
+        let token = null
+
+        if (userInfo) {
+          token = JSON.parse(userInfo).token
+        }
 
         if (!token) {
           return { name: 'login' }
@@ -106,6 +112,14 @@ export default new Router({
                 requiresAuth: true
               },
               component: lazyLoading('dashboard/task-set/finished/Finished')
+            },
+            {
+              name: 'add',
+              path: 'add',
+              meta: {
+                requiresAuth: true
+              },
+              component: lazyLoading('dashboard/task-set/add/Add')
             }
           ]
         },

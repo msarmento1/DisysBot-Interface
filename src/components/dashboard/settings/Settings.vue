@@ -6,7 +6,7 @@
           <form v-on:submit.prevent="">
             <div class="form-group with-icon-right form-group-w-btn" :class="{'has-error': errors.has('resourceRequestInterval')}">
               <div class="input-group">
-                <input name="resourceRequestInterval" min="1" type="number" v-model="master.resourceRequestInterval" v-validate="'min_value:1'"
+                <input name="resourceRequestInterval" min="1" v-model="master.resourceRequestInterval" v-validate="'min_value:1'"
                   title="" required />
                 <i class="fa fa-exclamation-triangle error-icon icon-right input-icon"></i>
                 <i class="fa fa-check valid-icon icon-right input-icon"></i>
@@ -24,7 +24,7 @@
           <form v-on:submit.prevent="">
             <div class="form-group with-icon-right form-group-w-btn" :class="{'has-error': errors.has('taskDispatchInterval')}">
               <div class="input-group">
-                <input name="taskDispatchInterval" min="1" type="number" v-model="master.taskDispatchInterval" v-validate="'min_value:1'"
+                <input name="taskDispatchInterval" min="1" v-model="master.taskDispatchInterval" v-validate="'min_value:1'"
                   title="" required />
                 <i class="fa fa-exclamation-triangle error-icon icon-right input-icon"></i>
                 <i class="fa fa-check valid-icon icon-right input-icon"></i>
@@ -48,8 +48,8 @@
           <form v-on:submit.prevent="">
             <div class="form-group with-icon-right form-group-w-btn" :class="{'has-error': errors.has('cpuThreshold')}">
               <div class="input-group">
-                <input name="cpuThreshold" min="0" max="100" type="number" v-model="slave.threshold.cpu" v-validate="'between:0,100'" title="" required
-                />
+                <input name="cpuThreshold" min="0" max="100" v-model="slave.threshold.cpu" v-validate="'numeric|between:0,100'"
+                  title="" required />
                 <i class="fa fa-exclamation-triangle error-icon icon-right input-icon"></i>
                 <i class="fa fa-check valid-icon icon-right input-icon"></i>
                 <label class="control-label">{{'settings.slave.cpuThreshold' | translate}}
@@ -66,8 +66,8 @@
           <form v-on:submit.prevent="">
             <div class="form-group with-icon-right form-group-w-btn" :class="{'has-error': errors.has('memoryThreshold')}">
               <div class="input-group">
-                <input name="memoryThreshold" min="0" max="100" type="number" v-model="slave.threshold.memory" v-validate="'between:0,100'" title=""
-                  required />
+                <input name="memoryThreshold" min="0" max="100" v-model="slave.threshold.memory" v-validate="'numeric|between:0,100'"
+                  title="" required />
                 <i class="fa fa-exclamation-triangle error-icon icon-right input-icon"></i>
                 <i class="fa fa-check valid-icon icon-right input-icon"></i>
                 <label class="control-label">{{'settings.slave.memoryThreshold' | translate}}
