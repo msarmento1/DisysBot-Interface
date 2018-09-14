@@ -1,8 +1,9 @@
 <template>
   <div class="btn-group">
-    <button class="btn btn-outline-dark btn-micro" @click="itemAction('pause-item', rowData, rowIndex)"><i class="fa fa-pause"></i></button>
-    <button class="btn btn-outline-dark btn-micro" @click="itemAction('resume-item', rowData, rowIndex)"><i class="fa fa-play"></i></button>
-    <button class="btn btn-outline-dark btn-micro" @click="itemAction('stop-item', rowData, rowIndex)"><i class="fa fa-stop"></i></button>
+    <button ref="pause" class="btn btn-outline-dark btn-micro" @click="itemAction('pause-item', rowData, rowIndex)"><i class="fa fa-pause"></i></button>
+    <button ref="resume" class="btn btn-outline-dark btn-micro" @click="itemAction('resume-item', rowData, rowIndex)"><i
+        class="fa fa-play"></i></button>
+    <button ref="stop" class="btn btn-outline-dark btn-micro" @click="itemAction('stop-item', rowData, rowIndex)"><i class="fa fa-stop"></i></button>
   </div>
 </template>
 
@@ -24,11 +25,32 @@
         const token = localStorage.getItem('token')
 
         if (action === 'pause-item') {
-          axios.post('http://localhost/api/v1/slave/pause', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+          this.$refs.pause.disabled = true
+
+          axios
+            .post('http://localhost/api/v1/slave/pause', { id: data._id }, { headers: { 'x-access-token': token } })
+            .then(() => {
+              this.$refs.pause.disabled = false
+            })
+            .catch(() => { })
         } else if (action === 'resume-item') {
-          axios.post('http://localhost/api/v1/slave/resume', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+          this.$refs.resume.disabled = true
+
+          axios
+            .post('http://localhost/api/v1/slave/resume', { id: data._id }, { headers: { 'x-access-token': token } })
+            .then(() => {
+              this.$refs.resume.disabled = false
+            })
+            .catch(() => { })
         } else if (action === 'stop-item') {
-          axios.post('http://localhost/api/v1/slave/stop', { id: data._id }, { headers: { 'x-access-token': token } }).catch(() => { })
+          this.$refs.stop.disabled = true
+
+          axios
+            .post('http://localhost/api/v1/slave/stop', { id: data._id }, { headers: { 'x-access-token': token } })
+            .then(() => {
+              this.$refs.stop.disabled = false
+            })
+            .catch(() => { })
         }
       }
     }
