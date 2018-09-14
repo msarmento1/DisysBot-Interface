@@ -8,12 +8,14 @@ export default {
     {
       name: 'startTime',
       title: 'start time',
-      callback: 'formatDate|DD/MM/YYYY, h:mm:ss a'
+      sortField: 'startTime',
+      callback: 'formatDate|DD/MM/YYYY, HH:mm:ss.SSS Z'
     },
     {
       name: 'endTime',
       title: 'end time',
-      callback: 'formatDate|DD/MM/YYYY, h:mm:ss a'
+      sortField: 'endTime',
+      callback: 'formatDate|DD/MM/YYYY, HH:mm:ss.SSS Z'
     },
     {
       name: '__component:finished-custom-actions',

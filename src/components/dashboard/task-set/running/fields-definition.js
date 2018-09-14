@@ -4,8 +4,7 @@ export default {
   tableFields: [
     {
       name: 'name',
-      title: 'name',
-      sortField: 'name'
+      title: 'name'
     },
     {
       name: 'remainingTasksCount',
@@ -19,7 +18,8 @@ export default {
     {
       name: 'startTime',
       title: 'start time',
-      callback: 'formatDate|DD/MM/YYYY, h:mm:ss a'
+      sortField: 'startTime',
+      callback: 'formatDate|DD/MM/YYYY, HH:mm:ss.SSS Z'
     },
     {
       name: '__component:running-custom-actions',

@@ -28,11 +28,13 @@ export default {
     {
       name: 'resource.cpu',
       title: 'cpu being used',
+      sortField: 'resource.cpu',
       callback: 'normalizeResource'
     },
     {
       name: 'resource.memory',
       title: 'memory being used',
+      sortField: 'resource.memory',
       callback: 'normalizeResource'
     },
     {
