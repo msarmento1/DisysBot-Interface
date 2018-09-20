@@ -61,7 +61,7 @@
     name: 'app-sidebar',
     data() {
       return {
-        isAdmin: JSON.parse(localStorage.getItem('userInfo')).isAdmin
+        isAdmin: true // JSON.parse(localStorage.getItem('userInfo')).isAdmin
       }
     },
     components: {

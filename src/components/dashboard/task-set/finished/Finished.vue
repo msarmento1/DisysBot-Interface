@@ -1,8 +1,7 @@
 <template>
   <vuestic-widget :headerText="$t('menu.finished')">
-    <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions"
-      :tableFields="tableFields" :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions"
-      :dataModeFilterableFields="dataModeFilterableFields">
+    <vuestic-data-table ref="vuesticDataTable" :apiMode="apiMode" :apiUrl="apiUrl" :httpOptions="httpOptions" :tableFields="tableFields"
+      :itemsPerPage="itemsPerPage" :onEachSide="onEachSide" :sortFunctions="sortFunctions" :dataModeFilterableFields="dataModeFilterableFields">
     </vuestic-data-table>
   </vuestic-widget>
 </template>
@@ -22,11 +21,7 @@
         interval: {},
         apiMode: true,
         apiUrl: 'http://localhost/api/v1/taskset/finished',
-        httpOptions: {
-          headers: {
-            'x-access-token': JSON.parse(localStorage.getItem('userInfo')).token
-          }
-        },
+        httpOptions: { withCredentials: true },
         sortFunctions: FieldsDef.sortFunctions,
         onEachSide: 1,
         tableFields: FieldsDef.tableFields,

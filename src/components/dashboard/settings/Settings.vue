@@ -115,9 +115,9 @@
       }
     },
     methods: {
-      update(token, property) {
+      update(property) {
         axios
-          .post('http://localhost/api/v1/settings/update', property, { headers: { 'x-access-token': token } })
+          .post('http://localhost/api/v1/settings/update', property, { withCredentials: true })
           .then(() => {
             this.modal.message = 'Success';
             this.$refs.modal.open()
@@ -128,40 +128,30 @@
           })
       },
       updateResourceRequestInterval() {
-        const { token } = JSON.parse(localStorage.getItem('userInfo'))
-
         const property = { master: { resourceRequestInterval: this.master.resourceRequestInterval } }
 
-        this.update(token, property)
+        this.update(property)
       },
       updateTaskDispatchInterval() {
-        const { token } = JSON.parse(localStorage.getItem('userInfo'))
-
         const property = { master: { taskDispatchInterval: this.master.taskDispatchInterval } }
 
-        this.update(token, property)
+        this.update(property)
       },
       updateCpuThreshold() {
-        const { token } = JSON.parse(localStorage.getItem('userInfo'))
-
         const property = { slave: { threshold: { cpu: this.slave.threshold.cpu } } }
 
-        this.update(token, property)
+        this.update(property)
       },
       updateMemoryThreshold() {
-        const { token } = JSON.parse(localStorage.getItem('userInfo'))
-
         const property = { slave: { threshold: { memory: this.slave.threshold.memory } } }
 
-        this.update(token, property)
+        this.update(property)
       }
     },
     mounted() {
       this.$nextTick(() => {
-        const { token } = JSON.parse(localStorage.getItem('userInfo'))
-
         axios
-          .get('http://localhost/api/v1/settings/master', { headers: { 'x-access-token': token } })
+          .get('http://localhost/api/v1/settings/master', { withCredentials: true })
           .then((res) => {
             this.master = res.data
           })
@@ -169,7 +159,7 @@
           })
 
         axios
-          .get('http://localhost/api/v1/settings/slave', { headers: { 'x-access-token': token } })
+          .get('http://localhost/api/v1/settings/slave', { withCredentials: true })
           .then((res) => {
             this.slave = res.data
           })

@@ -22,8 +22,6 @@
     },
     methods: {
       itemAction(action, data, index) {
-        const { token } = JSON.parse(localStorage.getItem('userInfo'))
-
         if (action === 'view-item') {
 
         } else if (action === 'edit-item') {
@@ -32,7 +30,7 @@
           this.$refs.delete.disabled = true
 
           axios
-            .post('http://localhost/api/v1/taskset/delete', { id: data._id }, { headers: { 'x-access-token': token } })
+            .post('http://localhost/api/v1/taskset/delete', { id: data._id }, { withCredentials: true })
             .then(() => {
               this.$refs.delete.disabled = false
               this.$parent.reload()

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import AppLayout from '../components/admin/AppLayout'
 import AuthLayout from '../components/auth/AuthLayout'
 import lazyLoading from './lazyLoading'
+import axios from 'axios'
 
 Vue.use(Router)
 
@@ -27,19 +28,14 @@ export default new Router({
     {
       path: '*',
       redirect: () => {
-        const userInfo = localStorage.getItem('userInfo')
-
-        let token = null
-
-        if (userInfo) {
-          token = JSON.parse(userInfo).token
-        }
-
-        if (!token) {
-          return { name: 'login' }
-        } else {
-          return { name: 'dashboard' }
-        }
+        return axios
+          .get('http://localhost/api/v1/auth/is-authenticated', { withCredentials: true }) // FIXME
+          .then(() => {
+            return { name: 'dashboard' }
+          })
+          .catch(() => {
+            return { name: 'login' }
+          })
       },
     },
     {
