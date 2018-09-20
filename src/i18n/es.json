@@ -183,8 +183,8 @@
       "taskDispatchInterval": "Intervalo de Despacho de Tareas (segundos)"
     },
     "slave": {
-      "cpuThreshold": "Límite de UPC",
-      "memoryThreshold": "Límite de Memoria"
+      "cpuThreshold": "Límite de UPC (%)",
+      "memoryThreshold": "Límite de Memoria (%)"
     }
   },
   "messages": {

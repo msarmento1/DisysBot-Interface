@@ -201,8 +201,8 @@
       "taskDispatchInterval": "Intervalo de Envio de Tarefas (segundos)"
     },
     "slave": {
-      "cpuThreshold": "Limite de CPU",
-      "memoryThreshold": "Limite de Memória"
+      "cpuThreshold": "Limite de CPU (%)",
+      "memoryThreshold": "Limite de Memória (%)"
     }
   },
   "messages": {

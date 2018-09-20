@@ -212,8 +212,8 @@
       "taskDispatchInterval": "Task Dispatch Interval (seconds)"
     },
     "slave": {
-      "cpuThreshold": "CPU Threshold",
-      "memoryThreshold": "Memory Threshold"
+      "cpuThreshold": "CPU Threshold (%)",
+      "memoryThreshold": "Memory Threshold (%)"
     }
   },
   "messages": {
