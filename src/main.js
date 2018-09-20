@@ -31,19 +31,18 @@ let mediaHandler = () => {
 
 router.beforeEach((to, from, next) => {
   store.commit('setLoading', true)
-  // if (to.meta.requiresAuth) {
-  //   const token = window.$cookies.get('DISYSBOT_SID')
-  //   console.log(token)
 
-  //   if (!token) {
-  //     next()
-  //   } else {
-  //     next({ path: '*' })
-  //   }
-  // } else {
-  //   next()
-  // }
-  next()
+  if (to.meta.requiresAuth) {
+    let token = window.$cookies.get('DISYSBOT_SID')
+
+    if (token) {
+      next()
+    } else {
+      next({ path: '*' })
+    }
+  } else {
+    next()
+  }
 })
 
 router.afterEach((to, from) => {

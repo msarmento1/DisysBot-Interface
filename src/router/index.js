@@ -27,14 +27,13 @@ export default new Router({
     {
       path: '*',
       redirect: () => {
-        // const token = window.$cookies.get('DISYSBOT_SID')
+        let token = window.$cookies.get('DISYSBOT_SID')
 
-        // if (!token) {
-        //   return { name: 'login' }
-        // } else {
-        //   return { name: 'dashboard' }
-        // }
-        return { name: 'login' }
+        if (!token) {
+          return { name: 'login' }
+        } else {
+          return { name: 'dashboard' }
+        }
       },
     },
     {

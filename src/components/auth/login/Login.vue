@@ -57,6 +57,9 @@
             this.$emit('modalEvent', { title: 'Error', message });
           })
       }
+    },
+    beforeMount() {
+      window.$cookies.remove('DISYSBOT_SID')
     }
   }
 </script>
