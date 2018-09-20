@@ -61,8 +61,6 @@
         axios
           .post('http://localhost/api/v1/auth/signup', this.input)
           .then((res) => {
-            const userInfo = res.data;
-            localStorage.setItem('userInfo', userInfo)
             this.$router.push('/admin/dashboard')
           })
           .catch((e) => {

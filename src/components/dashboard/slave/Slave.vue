@@ -21,11 +21,7 @@
         interval: {},
         apiMode: true,
         apiUrl: 'http://localhost/api/v1/slave',
-        httpOptions: {
-          headers: {
-            'x-access-token': JSON.parse(localStorage.getItem('userInfo')).token
-          }
-        },
+        httpOptions: { withCredentials: true },
         sortFunctions: FieldsDef.sortFunctions,
         onEachSide: 1,
         tableFields: FieldsDef.tableFields,

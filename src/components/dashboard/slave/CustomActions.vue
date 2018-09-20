@@ -22,13 +22,11 @@
     },
     methods: {
       itemAction(action, data, index) {
-        const { token } = JSON.parse(localStorage.getItem('userInfo'))
-
         if (action === 'pause-item') {
           this.$refs.pause.disabled = true
 
           axios
-            .post('http://localhost/api/v1/slave/pause', { id: data._id }, { headers: { 'x-access-token': token } })
+            .post('http://localhost/api/v1/slave/pause', { id: data._id }, { withCredentials: true })
             .then(() => {
               this.$refs.pause.disabled = false
             })
@@ -39,7 +37,7 @@
           this.$refs.resume.disabled = true
 
           axios
-            .post('http://localhost/api/v1/slave/resume', { id: data._id }, { headers: { 'x-access-token': token } })
+            .post('http://localhost/api/v1/slave/resume', { id: data._id }, { withCredentials: true })
             .then(() => {
               this.$refs.resume.disabled = false
             })
@@ -50,7 +48,7 @@
           this.$refs.stop.disabled = true
 
           axios
-            .post('http://localhost/api/v1/slave/stop', { id: data._id }, { headers: { 'x-access-token': token } })
+            .post('http://localhost/api/v1/slave/stop', { id: data._id }, { withCredentials: true })
             .then(() => {
               this.$refs.stop.disabled = false
             })

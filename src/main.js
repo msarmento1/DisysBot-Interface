@@ -12,13 +12,14 @@ import router from './router'
 import VuesticPlugin from 'vuestic-theme/vuestic-plugin'
 import './i18n'
 import YmapPlugin from 'vue-yandex-maps'
-
+import VueCookies from 'vue-cookies'
 
 Vue.use(VuesticPlugin)
 Vue.use(YmapPlugin)
 
 // NOTE: workaround for VeeValidate + vuetable-2
 Vue.use(VeeValidate, { fieldsBagName: 'formFields' })
+Vue.use(VueCookies);
 
 let mediaHandler = () => {
   if (window.matchMedia(store.getters.config.windowMatchSizeLg).matches) {
@@ -30,23 +31,19 @@ let mediaHandler = () => {
 
 router.beforeEach((to, from, next) => {
   store.commit('setLoading', true)
-  if (to.meta.requiresAuth) {
-    const userInfo = localStorage.getItem('userInfo')
+  // if (to.meta.requiresAuth) {
+  //   const token = window.$cookies.get('DISYSBOT_SID')
+  //   console.log(token)
 
-    let token = null
-
-    if (userInfo) {
-      token = JSON.parse(userInfo).token
-    }
-
-    if (token) {
-      next()
-    } else {
-      next({ path: '*' })
-    }
-  } else {
-    next()
-  }
+  //   if (!token) {
+  //     next()
+  //   } else {
+  //     next({ path: '*' })
+  //   }
+  // } else {
+  //   next()
+  // }
+  next()
 })
 
 router.afterEach((to, from) => {
