@@ -22,7 +22,7 @@
             <span>{{ $t('menu.finished') }}</span>
           </span>
         </sidebar-link>
-        <sidebar-link :to="{ name: 'progress-bars' }">
+        <sidebar-link :to="{ name: 'add' }">
           <span slot="title">
             <span>{{ $t('menu.add') }}</span>
           </span>

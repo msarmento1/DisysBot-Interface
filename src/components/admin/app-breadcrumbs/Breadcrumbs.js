@@ -16,6 +16,10 @@ export default {
         {
           path: 'finished',
           displayName: 'menu.finished'
+        },
+        {
+          path: 'add',
+          displayName: 'menu.add'
         }
       ]
     },
