@@ -13,6 +13,7 @@ import VuesticPlugin from 'vuestic-theme/vuestic-plugin'
 import './i18n'
 import YmapPlugin from 'vue-yandex-maps'
 import VueCookies from 'vue-cookies'
+import axios from 'axios'
 
 Vue.use(VuesticPlugin)
 Vue.use(YmapPlugin)
@@ -22,39 +23,48 @@ Vue.use(VeeValidate, { fieldsBagName: 'formFields' })
 Vue.use(VueCookies);
 
 let mediaHandler = () => {
-  if (window.matchMedia(store.getters.config.windowMatchSizeLg).matches) {
-    store.dispatch('toggleSidebar', true)
-  } else {
-    store.dispatch('toggleSidebar', false)
-  }
+   if (window.matchMedia(store.getters.config.windowMatchSizeLg).matches) {
+      store.dispatch('toggleSidebar', true)
+   } else {
+      store.dispatch('toggleSidebar', false)
+   }
 }
 
-router.beforeEach((to, from, next) => {
-  store.commit('setLoading', true)
+router.beforeEach(async (to, from, next) => {
+   store.commit('setLoading', true)
 
-  if (to.meta.requiresAuth) {
-    let token = window.$cookies.get('DISYSBOT_SID')
-
-    if (token) {
+   if (to.meta.requiresAuth) {
+      if (await isAuthenticated()) {
+        next();
+      } else {
+        next({ path: '*' })
+      }
+   } else {
       next()
-    } else {
-      next({ path: '*' })
-    }
-  } else {
-    next()
-  }
+   }
 })
 
+var isAuthenticated = () => {
+   return axios
+      .get('http://localhost/api/v1/auth/is-authenticated', { withCredentials: true })
+      .then(() => {
+         return true;
+      })
+      .catch(() => {
+         return false;
+      })
+}
+
 router.afterEach((to, from) => {
-  mediaHandler()
-  store.commit('setLoading', false)
+   mediaHandler()
+   store.commit('setLoading', false)
 })
 
 /* eslint-disable no-new */
 
 new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
+   el: '#app',
+   router,
+   store,
+   render: h => h(App)
 })

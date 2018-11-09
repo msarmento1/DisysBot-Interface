@@ -27,13 +27,7 @@ export default new Router({
     {
       path: '*',
       redirect: () => {
-        let token = window.$cookies.get('DISYSBOT_SID')
-
-        if (!token) {
-          return { name: 'login' }
-        } else {
-          return { name: 'dashboard' }
-        }
+        return { name: 'login' }
       },
     },
     {
@@ -137,7 +131,8 @@ export default new Router({
           name: 'settings',
           path: 'settings',
           meta: {
-            requiresAuth: true
+            requiresAuth: true,
+            requiresAdmin: true
           },
           component: lazyLoading('dashboard/settings/Settings')
         },
