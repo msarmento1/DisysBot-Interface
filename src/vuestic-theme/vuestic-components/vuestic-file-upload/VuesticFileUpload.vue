@@ -1,20 +1,7 @@
 <template>
-  <div class="vuestic-file-upload"
-       :class="{'vuestic-file-upload--dropzone': dropzone}"
-  >
-    <vuestic-file-upload-container
-        :type="type"
-        :fileTypes="fileTypes"
-        :dropzone="dropzone"
-        @upload="uploadFile"
-    >
-      <vuestic-file-upload-list
-          v-if="files.length"
-          :type="type"
-          :files="files"
-          @remove="removeFile"
-          @remove-single="removeSingleFile"
-      />
+  <div class="vuestic-file-upload" :class="{'vuestic-file-upload--dropzone': dropzone}">
+    <vuestic-file-upload-container :type="type" :fileTypes="fileTypes" :dropzone="dropzone" @upload="uploadFile">
+      <vuestic-file-upload-list v-if="files.length" :type="type" :files="files" @remove="removeFile" @remove-single="removeSingleFile" />
     </vuestic-file-upload-container>
   </div>
 </template>
@@ -52,7 +39,7 @@
       }
     },
     methods: {
-      uploadFile (e) {
+      uploadFile(e) {
         let files = e.target.files || e.dataTransfer.files
 
         // type validation
@@ -60,14 +47,15 @@
           files = this.validateFileTypes(files)
         }
         this.files.push(...files)
+        this.$emit('input', this.files)
       },
-      removeFile (index) {
+      removeFile(index) {
         this.files.splice(index, 1)
       },
-      removeSingleFile () {
+      removeSingleFile() {
         this.files = []
       },
-      validateFileTypes (files) {
+      validateFileTypes(files) {
         return [...files].filter(file => {
           const fileName = file.name
           const extn = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase()
@@ -77,10 +65,10 @@
     },
     computed: {
       files: {
-        get () {
+        get() {
           return this.value
         },
-        set (files) {
+        set(files) {
           this.$emit('input', files)
         },
       },
@@ -106,15 +94,19 @@
     outline: none;
     cursor: pointer;
     padding: 0;
-    & + & {
+
+    &+& {
       margin-left: 1.5rem;
     }
+
     &--primary {
       color: $brand-primary;
+
       &:hover {
         opacity: 0.6;
       }
     }
+
     &--secondary {
       color: $white;
     }

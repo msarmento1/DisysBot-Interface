@@ -2,16 +2,20 @@
   <vuestic-widget :headerText="$t('menu.add')">
     <div class="row">
       <div class="col-md-6">
-        <div class="form-group">
-          <div class="input-group">
-            <input id="task-argument-template" v-model="taskArgumentTemplate" required />
-            <label class="control-label" for="task-argument-template">Task Argument Template</label><i class="bar"></i>
+        <form v-on:submit.prevent="add">
+          <div class="form-group">
+            <div class="input-group">
+              <input id="task-argument-template" v-model="taskArgumentTemplate" required />
+              <label class="control-label" for="task-argument-template">Task Argument Template</label><i class="bar"></i>
+            </div>
           </div>
-        </div>
-
-        <div v-for="(intepretiveDirective, index) in intepretiveDirectives" :key="index">
-          <component :is="intepretiveDirective"></component>
-        </div>
+          <div v-for="(intepretiveDirective, index) in intepretiveDirectives" :key="index">
+            <component v-on:push-directive="pushDirective" :is="intepretiveDirective"></component>
+          </div>
+          <button class="btn btn-primary">
+            {{'menu.add' | translate}}
+          </button>
+        </form>
       </div>
     </div>
   </vuestic-widget>
@@ -30,7 +34,8 @@
     },
     data() {
       return {
-        taskArgumentTemplate: ''
+        taskArgumentTemplate: '',
+        directives: {}
       }
     },
     computed: {
@@ -56,6 +61,17 @@
         }
 
         return directives;
+      }
+    },
+    methods: {
+      add: function () {
+        console.log('add')
+      },
+      pushDirective(directive) {
+        console.log('heyoh')
+        this.directives[directive.id] = { type: directive.type, value: directive.value }
+
+        console.log(this.directives)
       }
     }
   }
